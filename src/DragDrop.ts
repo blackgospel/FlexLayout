@@ -226,6 +226,22 @@ export class DragDrop {
         return rtn;
     }
 
+    pauseDrag() {
+        // this._rootElement!.removeEventListener("dragenter", this._onDragEnter);
+        // this._rootElement!.removeEventListener("dragover", this._onMouseMove);
+        // this._rootElement!.removeEventListener("dragleave", this._onDragLeave);
+        // this._document!.removeEventListener("dragend", this._onDragCancel);
+        // this._document!.removeEventListener("drop", this._onMouseUp);
+        // this._document!.removeEventListener("mousemove", this._onMouseMove);
+        // this._document!.removeEventListener("mouseup", this._onMouseUp);
+        // this._document!.removeEventListener("touchend", this._onMouseUp);
+        // this._document!.removeEventListener("touchmove", this._onMouseMove);
+        this.hideGlass();
+
+        this._dragging = false;
+        // this._active = false;
+    }
+
     cancelDrag() {
         this._rootElement!.removeEventListener("dragenter", this._onDragEnter);
         this._rootElement!.removeEventListener("dragover", this._onMouseMove);
