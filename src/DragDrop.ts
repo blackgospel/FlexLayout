@@ -226,6 +226,24 @@ export class DragDrop {
         return rtn;
     }
 
+    cancelDrag() {
+        this._rootElement!.removeEventListener("dragenter", this._onDragEnter);
+        this._rootElement!.removeEventListener("dragover", this._onMouseMove);
+        this._rootElement!.removeEventListener("dragleave", this._onDragLeave);
+        this._document!.removeEventListener("dragend", this._onDragCancel);
+        this._document!.removeEventListener("drop", this._onMouseUp);
+        this._document!.removeEventListener("mousemove", this._onMouseMove);
+        this._document!.removeEventListener("mouseup", this._onMouseUp);
+        this._document!.removeEventListener("touchend", this._onMouseUp);
+        this._document!.removeEventListener("touchmove", this._onMouseMove);
+        this.hideGlass();
+        if (this._fDragCancel !== undefined) {
+            this._fDragCancel(this._dragging);
+        }
+        this._dragging = false;
+        this._active = false;
+    }
+
     /** @internal */
     private _onKeyPress(event: KeyboardEvent) {
         if (event.code === 'Escape') {
